@@ -58,6 +58,9 @@
 #delete:hover{
     color: rgb(241, 58, 58);
 }
+#check:hover{
+  color: rgb(241, 58, 58);
+}
 
 @media only screen and (max-width: 900px){
   .form{

@@ -5,12 +5,10 @@ import AddTodo from './components/AddTodo'
 import uuid from 'uuid'
 import {library } from '@fortawesome/fontawesome-svg-core'
 import {faTrash } from '@fortawesome/free-solid-svg-icons'
-import {faEdit } from '@fortawesome/free-solid-svg-icons'
 import {faCheck } from '@fortawesome/free-solid-svg-icons'
 import SortTodo from './components/SortTodo';
 
 library.add(faTrash)
-library.add(faEdit)
 library.add(faCheck)
 
 class App extends Component {
