@@ -35,6 +35,25 @@ class App extends Component {
         return todo;
     }) })
 }
+handleInput(e){
+  this.setState({
+    currentItem:{
+      id:uuid.v4(),
+      title: e.target.value,
+      checked:false
+    }
+  })
+}
+
+//Edit Todo
+editTodo = (id,event) => {
+  this.setState({ todos: this.state.todos.map(todo => {
+      if(todo.id === id) {
+          todo.title = event.target.value
+      }
+      return todo;
+  }) })
+}
 
 //Delete Todo
 deleteTodo = (id) => {
@@ -61,6 +80,7 @@ addTodo = (title) => {
             todos={this.state.todos}
             markComplete={this.markComplete}
             deleteTodo={this.deleteTodo} 
+            editTodo={this.editTodo}
           />
         </div>
       </div>
