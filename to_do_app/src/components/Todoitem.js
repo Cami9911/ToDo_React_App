@@ -7,7 +7,7 @@ export class Todoitem extends Component {
     getStyle = () => {
             return {
                 textDecoration: this.props.todo.completed ? 'line-through': 'none',
-                color: this.props.todo.completed ? 'rgb(241, 58, 58)': 'white'
+                color: this.props.todo.completed ? 'rgb(241, 58, 58)': 'white',
             }
     }
  
@@ -19,6 +19,7 @@ export class Todoitem extends Component {
                     <input id="title" type="text" value={title} style={this.getStyle()} onChange={this.props.editTodo.bind(this,id)}/>
                     <input id="check" type="checkbox" onChange={this.props.markComplete.bind(this,id)} />
                     <FontAwesomeIcon id="delete" icon="trash" onClick={this.props.deleteTodo.bind(this,id)}/>
+                    {/* <button  onClick={this.props.sortTodo.bind(this,title)}>Sort</button> */}
                 </p>
             </div>
         )

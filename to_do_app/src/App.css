@@ -22,3 +22,23 @@ body{
     font-size: 30px;
     margin-top: 30px;
   }
+  .container::-webkit-scrollbar {
+    width: 5px;
+ }
+
+  .container::-webkit-scrollbar-track {
+      background: #f8f5f5;
+  }
+
+  .container::-webkit-scrollbar-thumb {
+      background-color: #f8f5f5;
+      border-radius: 20px;
+      border: 3px solid #f8f5f5;
+  }
+@media only screen and (max-width: 900px){
+  
+  .App{
+    height:500px;
+    width:350px;
+  }
+}

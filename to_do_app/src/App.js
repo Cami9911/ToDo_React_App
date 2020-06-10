@@ -7,6 +7,7 @@ import {library } from '@fortawesome/fontawesome-svg-core'
 import {faTrash } from '@fortawesome/free-solid-svg-icons'
 import {faEdit } from '@fortawesome/free-solid-svg-icons'
 import {faCheck } from '@fortawesome/free-solid-svg-icons'
+import SortTodo from './components/SortTodo';
 
 library.add(faTrash)
 library.add(faEdit)
@@ -27,15 +28,20 @@ class App extends Component {
         return todo;
     }) })
 }
-handleInput(e){
-  this.setState({
-    currentItem:{
-      id:uuid.v4(),
-      title: e.target.value,
-      checked:false
-    }
-  })
+compareBy(key) {
+  return function (a, b) {
+    if (""+a[key]<(""+b[key])) return -1;
+    if (""+a[key]>(""+b[key])) return 1;
+    return 0;
+  };}
+  
+sortTodo = (title) =>{
+  let arrayCopy = [...this.state.todos];
+  arrayCopy.sort(this.compareBy(title));
+//arrayCopy.reverse(); for descending
+  this.setState({data: arrayCopy});
 }
+
 
 //Edit Todo
 editTodo = (id,event) => {
@@ -57,10 +63,12 @@ addTodo = (title) => {
   const newTodo = {
     id: uuid.v4(),
     title,
-    completed: false
+    completed: false,
+    isOldestFirst:true
   }
   this.setState({ todos: [...this.state.todos, newTodo]})
 }
+
 
   render() {
     return (
@@ -70,11 +78,13 @@ addTodo = (title) => {
         </header>
         <div className="container">
           <AddTodo addTodo={this.addTodo}/>
+          <SortTodo sortTodo={this.sortTodo}/>
           <Todos 
             todos={this.state.todos}
             markComplete={this.markComplete}
             deleteTodo={this.deleteTodo} 
             editTodo={this.editTodo}
+            //sortTodo={this.sortTodo}
           />
         </div>
       </div>
