@@ -1,29 +1,21 @@
 import React, { Component } from 'react'
+import './App.css';
 import Todos from './components/Todos'
 import AddTodo from './components/AddTodo'
-import Header from './components/layout/Header'
 import uuid from 'uuid'
+import {library } from '@fortawesome/fontawesome-svg-core'
+import {faTrash } from '@fortawesome/free-solid-svg-icons'
+import {faEdit } from '@fortawesome/free-solid-svg-icons'
+import {faCheck } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faTrash)
+library.add(faEdit)
+library.add(faCheck)
 
 class App extends Component {
 
   state = {
-    todos: [
-      {
-        id: uuid.v4(),
-        title: 'Take out the trash',
-        completed: false
-      },
-      {
-        id: uuid.v4(),
-        title: 'Dinner with friends',
-        completed: false
-      },
-      {
-        id: uuid.v4(),
-        title: 'Meeting with parents',
-        completed: false
-      }
-    ]
+    todos: []
   }
 
   //Toggle Complete
@@ -73,8 +65,10 @@ addTodo = (title) => {
   render() {
     return (
       <div className="App">
+         <header>
+            <p>Task Manager</p>
+        </header>
         <div className="container">
-          <Header />
           <AddTodo addTodo={this.addTodo}/>
           <Todos 
             todos={this.state.todos}

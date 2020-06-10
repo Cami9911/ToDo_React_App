@@ -1,22 +1,24 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import './Todoitem.css'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 export class Todoitem extends Component {
     getStyle = () => {
             return {
-
-                textDecoration: this.props.todo.completed ? 'line-through': 'none'
+                textDecoration: this.props.todo.completed ? 'line-through': 'none',
+                color: this.props.todo.completed ? 'rgb(241, 58, 58)': 'white'
             }
     }
-  
+ 
     render() {
         const { id, title } = this.props.todo;
         return (
-            <div >
+            <div className="tasks">
                 <p>
-                    <input type="checkbox" onChange={this.props.markComplete.bind(this,id)} />
-                    <input type="text" value={title} style={this.getStyle()} onChange={this.props.editTodo.bind(this,id)}/>
-                    <button onClick={this.props.deleteTodo.bind(this,id)}>x</button>
+                    <input id="title" type="text" value={title} style={this.getStyle()} onChange={this.props.editTodo.bind(this,id)}/>
+                    <input id="check" type="checkbox" onChange={this.props.markComplete.bind(this,id)} />
+                    <FontAwesomeIcon id="delete" icon="trash" onClick={this.props.deleteTodo.bind(this,id)}/>
                 </p>
             </div>
         )
