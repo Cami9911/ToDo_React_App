@@ -9,8 +9,13 @@ export class AddTodo extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.addTodo(this.state.title);
-        this.setState({ title: ''}) //clean input
+        if (this.state.title === "") {
+           alert("Cannot be empty")
+        }
+        else {
+            this.props.addTodo(this.state.title);
+            this.setState({ title: '' }) //clean input
+        }
     }
 
     onChange = (e) =>this.setState({ [e.target.name]: e.target.value })

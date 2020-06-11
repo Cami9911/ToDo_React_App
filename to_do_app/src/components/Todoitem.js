@@ -10,10 +10,13 @@ export class Todoitem extends Component {
                 color: this.props.todo.completed ? 'rgb(241, 58, 58)': 'white',
             }
     }
+   
+ 
  
     render() {
         const { id, title } = this.props.todo;
         return (
+            
             <div className="tasks">
                 <p>
                     <input id="title" type="text" value={title} style={this.getStyle()} onChange={this.props.editTodo.bind(this,id)}/>

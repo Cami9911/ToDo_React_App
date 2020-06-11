@@ -7,6 +7,8 @@ import {library } from '@fortawesome/fontawesome-svg-core'
 import {faTrash } from '@fortawesome/free-solid-svg-icons'
 import {faCheck } from '@fortawesome/free-solid-svg-icons'
 import SortTodo from './components/SortTodo';
+import HTML5Backend from 'react-dnd-html5-backend'
+import { DragDropContext } from 'react-dnd'
 
 library.add(faTrash)
 library.add(faCheck)
@@ -33,11 +35,16 @@ compareBy(key) {
     return 0;
   };}
   
-sortTodo = (title) =>{
-  let arrayCopy = [...this.state.todos];
-  arrayCopy.sort(this.compareBy(title));
-//arrayCopy.reverse(); for descending
-  this.setState({data: arrayCopy});
+sortTodo=()=>{
+  console.log("fa ceva")
+  this.setState({ todos: this.state.todos.map(todo => {
+    this.compareBy(todo.title)
+    return todo;
+
+}) })
+console.log("fa ceva2")
+
+  
 }
 
 

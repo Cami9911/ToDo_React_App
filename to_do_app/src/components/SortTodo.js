@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import './Todoitem.css'
 
-export class SortTodo extends Component {
-    render() {
+function sortFunction(props){
         return (
-            0
+            <button onClick={props.sortTodo}>Sort</button>
         )
-    }
 }
 
-export default SortTodo
+export default sortFunction
