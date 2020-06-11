@@ -74,23 +74,24 @@ addTodo = (title) => {
   this.setState({ todos: [...this.state.todos, newTodo]})
 }
 
-
   render() {
     return (
       <div className="App">
-         <header>
-            <p>Task Manager</p>
+        <header>
+          <p>Task Manager</p>
         </header>
         <div className="container">
-          <AddTodo addTodo={this.addTodo}/>
-          <SortTodo sortTodo={this.sortTodo}/>
-          <Todos 
-            todos={this.state.todos}
-            markComplete={this.markComplete}
-            deleteTodo={this.deleteTodo} 
-            editTodo={this.editTodo}
+          <AddTodo addTodo={this.addTodo} />
+          <SortTodo sortTodo={this.sortTodo} />
+          <div className="scrollArea">
+            <Todos
+              todos={this.state.todos}
+              markComplete={this.markComplete}
+              deleteTodo={this.deleteTodo}
+              editTodo={this.editTodo}
             //sortTodo={this.sortTodo}
-          />
+            />
+          </div>
         </div>
       </div>
     )

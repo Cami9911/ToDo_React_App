@@ -22,23 +22,33 @@ body{
     font-size: 30px;
     margin-top: 30px;
   }
-  .container::-webkit-scrollbar {
+  .scrollArea::-webkit-scrollbar {
     width: 5px;
+    background-color: #F5F5F5;
  }
 
-  .container::-webkit-scrollbar-track {
-      background: #f8f5f5;
+  .scrollArea::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.6);
+      background-color: #CCCCCC;
   }
 
-  .container::-webkit-scrollbar-thumb {
-      background-color: #f8f5f5;
-      border-radius: 20px;
-      border: 3px solid #f8f5f5;
+  .scrollArea::-webkit-scrollbar-thumb {
+      background-image: linear-gradient(white, black);
+  
+  }
+
+  .scrollArea{
+    margin-top: 20px;
+    overflow-y: scroll;
+    height:350px;
   }
 @media only screen and (max-width: 900px){
   
   .App{
     height:500px;
     width:350px;
+  }
+  .scrollArea{
+    height:250px;
   }
 }
