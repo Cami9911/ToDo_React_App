@@ -10,8 +10,6 @@ export class Todoitem extends Component {
                 color: this.props.todo.completed ? 'rgb(241, 58, 58)': 'white',
             }
     }
-   
- 
  
     render() {
         const { id, title } = this.props.todo;

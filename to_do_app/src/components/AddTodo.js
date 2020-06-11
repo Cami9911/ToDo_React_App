@@ -11,6 +11,7 @@ export class AddTodo extends Component {
         e.preventDefault();
         if (this.state.title === "") {
            alert("Cannot be empty")
+
         }
         else {
             this.props.addTodo(this.state.title);
@@ -30,5 +31,6 @@ export class AddTodo extends Component {
         )
     }
 }
+
 
 export default AddTodo

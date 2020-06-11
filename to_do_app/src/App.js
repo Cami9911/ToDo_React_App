@@ -6,9 +6,7 @@ import uuid from 'uuid'
 import {library } from '@fortawesome/fontawesome-svg-core'
 import {faTrash } from '@fortawesome/free-solid-svg-icons'
 import {faCheck } from '@fortawesome/free-solid-svg-icons'
-import SortTodo from './components/SortTodo';
-import HTML5Backend from 'react-dnd-html5-backend'
-import { DragDropContext } from 'react-dnd'
+import OptionsTodo from './components/OptionsTodo';
 
 library.add(faTrash)
 library.add(faCheck)
@@ -28,25 +26,11 @@ class App extends Component {
         return todo;
     }) })
 }
-compareBy(key) {
-  return function (a, b) {
-    if (""+a[key]<(""+b[key])) return -1;
-    if (""+a[key]>(""+b[key])) return 1;
-    return 0;
-  };}
-  
+
+//Reverse list
 sortTodo=()=>{
-  console.log("fa ceva")
-  this.setState({ todos: this.state.todos.map(todo => {
-    this.compareBy(todo.title)
-    return todo;
-
-}) })
-console.log("fa ceva2")
-
-  
+  this.setState({ todos: [...this.state.todos.reverse(todo => todo.completed === true)]})
 }
-
 
 //Edit Todo
 editTodo = (id,event) => {
@@ -62,6 +46,14 @@ editTodo = (id,event) => {
 deleteTodo = (id) => {
   this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)]})
 }
+//Delete all Todo
+deleteAllTodo=()=>{
+  this.setState({ todos: [...this.state.todos.filter(todo => todo.title === true)]})
+}
+//Delete check Todo
+deleteCheckTodo=()=>{
+  this.setState({ todos: [...this.state.todos.filter(todo => todo.completed === false)]})
+}
 
 //Add Todo
 addTodo = (title) => {
@@ -69,7 +61,6 @@ addTodo = (title) => {
     id: uuid.v4(),
     title,
     completed: false,
-    isOldestFirst:true
   }
   this.setState({ todos: [...this.state.todos, newTodo]})
 }
@@ -82,14 +73,16 @@ addTodo = (title) => {
         </header>
         <div className="container">
           <AddTodo addTodo={this.addTodo} />
-          <SortTodo sortTodo={this.sortTodo} />
+          <OptionsTodo
+            sortTodo={this.sortTodo}
+            deleteAllTodo={this.deleteAllTodo}
+            deleteCheckTodo={this.deleteCheckTodo} />
           <div className="scrollArea">
             <Todos
               todos={this.state.todos}
               markComplete={this.markComplete}
               deleteTodo={this.deleteTodo}
               editTodo={this.editTodo}
-            //sortTodo={this.sortTodo}
             />
           </div>
         </div>
