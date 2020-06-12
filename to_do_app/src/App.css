@@ -12,6 +12,7 @@ body{
     width: 500px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     margin-top: 70px;
     border-radius: 10px;
@@ -37,10 +38,24 @@ body{
   }
 
   .scrollArea{
-    margin-top: 20px;
     overflow-y: scroll;
     height:350px;
+    margin-bottom: 10px;
   }
+
+  .link{
+    color:white;
+    font-size: 15px;
+    /* margin-left: 150px; */
+  }
+  .links{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: -30px;
+    margin-top: 20px;
+  }
+
 @media only screen and (max-width: 900px){
   
   .App{
