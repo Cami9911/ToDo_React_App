@@ -1,5 +1,6 @@
 import React from 'react'
 import './Todoitem.css'
+import PropTypes from 'prop-types'
 
 function optionsFunction(props){
         return (
@@ -10,5 +11,11 @@ function optionsFunction(props){
             </div>
         )
 }           
+
+optionsFunction.propTypes = {
+    sortTodo: PropTypes.func.isRequired,
+    deleteAllTodo: PropTypes.func.isRequired,
+    deleteCheckTodo: PropTypes.func.isRequired
+}
 
 export default optionsFunction

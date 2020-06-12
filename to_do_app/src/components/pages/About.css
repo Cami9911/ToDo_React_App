@@ -1,0 +1,10 @@
+.about{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color:white;
+    font-size: 20px;
+}
+p{
+    margin-left: 10px;
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Todoitem.css'
-
+import PropTypes from 'prop-types'
 
 export class AddTodo extends Component {
     state = {
@@ -9,12 +9,10 @@ export class AddTodo extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        let error=false
         this.setState({
             message: ""
         })
         if (this.state.title === "") {
-            error=true;
             this.setState({
                 message: "Please insert a task."
             })
@@ -41,5 +39,8 @@ export class AddTodo extends Component {
     }
 }
 
+AddTodo.propTypes = {
+    addTodo: PropTypes.func.isRequired,
+}
 
 export default AddTodo

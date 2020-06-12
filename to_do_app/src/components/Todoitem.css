@@ -84,4 +84,7 @@
   .tasks{
     width: 80vw;
   }
+  .options{
+    width: 60px;
+  }
 }
