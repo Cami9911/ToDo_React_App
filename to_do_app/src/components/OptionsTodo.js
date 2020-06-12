@@ -9,6 +9,6 @@ function optionsFunction(props){
             <button className="options" onClick={props.deleteCheckTodo}>Delete Tasks Completed</button>
             </div>
         )
-}
+}           
 
 export default optionsFunction

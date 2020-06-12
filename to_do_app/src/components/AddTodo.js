@@ -9,9 +9,15 @@ export class AddTodo extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
+        let error=false
+        this.setState({
+            message: ""
+        })
         if (this.state.title === "") {
-           alert("Cannot be empty")
-
+            error=true;
+            this.setState({
+                message: "Please insert a task."
+            })
         }
         else {
             this.props.addTodo(this.state.title);
@@ -23,11 +29,14 @@ export class AddTodo extends Component {
 
     render() {
         return (
+            <div style={{color:'rgb(241, 58, 58)'}}>
+            {this.state.message } 
             <form className="form" onSubmit={this.onSubmit}>
                 <input className="inputText" type="text" value={this.state.title} name="title" 
                 placeholder="Add Tasks..." onChange={this.onChange}></input>
                 <input type="submit" value="Submit" className="btn"></input>
             </form>
+            </div>
         )
     }
 }
